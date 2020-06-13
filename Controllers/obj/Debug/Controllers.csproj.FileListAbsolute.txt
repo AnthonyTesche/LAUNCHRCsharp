@@ -1,0 +1,13 @@
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Controllers.dll
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Controllers.pdb
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Entities.dll
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Newtonsoft.Json.dll
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Services.dll
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Entities.pdb
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Services.pdb
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\bin\Debug\Newtonsoft.Json.xml
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\obj\Debug\Controllers.csprojAssemblyReference.cache
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\obj\Debug\Controllers.csproj.CoreCompileInputs.cache
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\obj\Debug\Controllers.csproj.CopyComplete
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\obj\Debug\Controllers.dll
+C:\Users\tesch\source\repos\LAUNCHR\Controllers\obj\Debug\Controllers.pdb
