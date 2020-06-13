@@ -19,6 +19,7 @@ namespace LAUNCHR
         {
             InitializeComponent();
             ApiController apiControl = new ApiController();
+            //News
             News Notice = new News();
             Notice = apiControl.ApiCallNews();
             CopyrightText.Text = Notice.copyright;
@@ -29,6 +30,17 @@ namespace LAUNCHR
             Service_VersionText.Text = Notice.service_version;
             TitleText.Text = Notice.title;
             UrlText.Text = Notice.url;
+
+            //ExoPlanetas
+            ExoPlanet planet = new ExoPlanet();
+            //ApiCallExoPlanet tem siistema de pesquisa, "false"(string) para retornar lista de planetas, valor/nome do planeta retorna ele ou nomes parecidos
+            foreach(ExoPlanet x in apiControl.ApiCallExoPlanet("false"))
+            {
+                Planets.Items.Add(x.pl_hostname);
+            }
+            pl_hostname.Text = planet.pl_hostname;
+            //Utilizar variaveis do exoPlanets.js q enviei no DISCORD (Chat Desenvolvimento de Sistemas)
+            //Adicionar explicações de cada uma das variaveis base no minimo | var base->(exoPlanets.js)
         }
     }
 }

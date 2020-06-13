@@ -26,12 +26,33 @@ namespace Controllers
             return Notice;
         }
 
-        public string ApiCallExoPlanet()
+        public List<ExoPlanet> ApiCallExoPlanet(string search)
         {
-            string url = "API URL";
-            string key = "API KEY";
-            Api api = new Api(url, key);
-            return api.makeRequest().ToString();
+            string url = "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json";
+            List<ExoPlanet> planet = new List<ExoPlanet>();
+            if (search == "false")
+            {
+                string key = "";
+                Api api = new Api(url, key);
+                var entitiesPlanet = JsonConvert.DeserializeObject<IList<ExoPlanet>>(api.makeRequest().ToString());
+                foreach(ExoPlanet x in entitiesPlanet)
+                {
+                    planet.Add(x);
+                }
+                
+                return planet;
+            } else
+            {
+                string key = "&where=pl_hostname%20like%20%27" + search + "%25%27&order=pl_hostname";
+                Api api = new Api(url, key);
+                var entitiesPlanet = JsonConvert.DeserializeObject<IList<ExoPlanet>>(api.makeRequest().ToString());
+                foreach(ExoPlanet x in entitiesPlanet)
+                {
+                    planet.Add(x);
+                }
+
+                return planet;
+            }
         }
     }
 }
