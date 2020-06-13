@@ -1,9 +1,9 @@
 # LAUNCHRCsharp
 
-Conjunto de API's disponibiliizadas pela NASA para utilização em projetos.
-Projeto LAUNCHR consiste na disponibilidade de dados da NASA de forma mais intuitiva através do sistema escrito eem C#.
+Conjunto de API's disponibiliizadas pela NASA para utilizaï¿½ï¿½o em projetos.
+Projeto LAUNCHR consiste na disponibilidade de dados da NASA de forma mais intuitiva atravï¿½s do sistema escrito eem C#.
 
 ## Packages utilizados
 
-[Documentação NuGet](https://github.com/NuGet/docs.microsoft.com-nuget) contém documentação do NuGet's. 
-[Documentação Json.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) contém documentação do Json.NET. 
+- [Documentaï¿½ï¿½o NuGet](https://github.com/NuGet/docs.microsoft.com-nuget) contï¿½m documentaï¿½ï¿½o do NuGet's. 
+- [Documentaï¿½ï¿½o Json.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) contï¿½m documentaï¿½ï¿½o do Json.NET. 

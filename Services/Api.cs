@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Net;
 using System.IO;
+using Entities;
 
 namespace Services
 {
     public class Api
     {
-        private const string url = "URL API";
-        private string key = "KEY API";
-
         public string endPoint { get; set; }
         public httpVerb httpMethod { get; set; }
         public enum httpVerb
@@ -18,7 +16,7 @@ namespace Services
             PUT,
             DELETE
         }
-        public Api()
+        public Api(string url, string key)
         {
             endPoint = url + key;
             httpMethod = httpVerb.GET;
@@ -26,22 +24,14 @@ namespace Services
 
         public string makeRequest()
         {
-
             string strResponseValue = string.Empty;
-
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endPoint);
-
             request.Method = httpMethod.ToString();
-
             HttpWebResponse response = null;
 
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
-
-
-                //Proecess the resppnse stream... (could be JSON, XML or HTML etc..._
-
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     if (responseStream != null)
@@ -64,7 +54,7 @@ namespace Services
                     ((IDisposable)response).Dispose();
                 }
             }
-
+            
             return strResponseValue;
         }
     }
