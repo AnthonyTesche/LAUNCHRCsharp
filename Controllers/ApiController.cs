@@ -12,7 +12,7 @@ namespace Controllers
         public News ApiCallNews()
         {
             string url = "https://api.nasa.gov/planetary/apod";
-            string key = "?api_key=qExb1GxixvyuxsUefkckJ97Iykc6g8Q3WNirJFDQ";
+            string key = "API KEY";
             Api api = new Api(url, key);
             News Notice = new News();
             try
