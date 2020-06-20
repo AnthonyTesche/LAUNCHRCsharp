@@ -4,29 +4,48 @@ using System.Linq;
 using Services;
 using Entities;
 using Newtonsoft.Json;
+using System.Security.AccessControl;
 
 namespace Controllers
 {
     public class ApiController
     {
-        public News ApiCallNews()
+        public List<News> ApiCallNews(string searchInit = "", string searchFinish = "")
         {
             string url = "https://api.nasa.gov/planetary/apod";
-            string key = "API KEY";
-            Api api = new Api(url, key);
-            News Notice = new News();
+            string key = "?api_key= KEY API";
+            string search = "&start_date=" + searchInit + "&end_date=" + searchFinish;
+            List<News> Notice = new List<News>();
             try
             {
-                Notice = JsonConvert.DeserializeObject<News>(api.makeRequest().ToString());
-                return Notice;
-            } catch (Exception e)
+                if (String.IsNullOrEmpty(searchInit) && String.IsNullOrEmpty(searchFinish))
+                {
+                    string today = DateTime.Now.ToString("yyyy-MM-dd");
+                    search = "&start_date=" + today + "&end_date=" + today;
+                    Api api = new Api(url, key);
+                    var news = JsonConvert.DeserializeObject<News>(api.makeRequest().ToString());
+                    Notice.Add(news);
+                    return Notice;
+                } else
+                {
+                    key += search;
+                    Api api = new Api(url, key);
+                    var news = JsonConvert.DeserializeObject<IList<News>>(api.makeRequest().ToString());
+                    foreach (News x in news)
+                    {
+                        Notice.Add(x);
+                    }
+                    return Notice;
+                }
+            } 
+            catch (Exception e)
             {
                 //Chamar erros aqui "e"
             }
             return Notice;
         }
 
-        public List<ExoPlanet> ApiCallExoPlanet(string search)
+        public List<ExoPlanet> ApiCallExoPlanet(string search = "false")
         {
             string url = "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json";
             List<ExoPlanet> planet = new List<ExoPlanet>();
@@ -54,5 +73,7 @@ namespace Controllers
                 return planet;
             }
         }
+
+
     }
 }

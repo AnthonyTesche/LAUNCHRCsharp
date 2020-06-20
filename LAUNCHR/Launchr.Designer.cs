@@ -196,7 +196,7 @@
             // Planets
             // 
             this.Planets.FormattingEnabled = true;
-            this.Planets.Location = new System.Drawing.Point(498, 199);
+            this.Planets.Location = new System.Drawing.Point(480, 125);
             this.Planets.Name = "Planets";
             this.Planets.Size = new System.Drawing.Size(121, 21);
             this.Planets.TabIndex = 18;

@@ -19,22 +19,32 @@ namespace LAUNCHR
         {
             InitializeComponent();
             ApiController apiControl = new ApiController();
+
+            //Comments
+            //Busca e adiciona comentarios atraves do pl_hostname de cada planeta
+
+
             //News
-            News Notice = new News();
+            List<News> Notice = new List<News>();
             Notice = apiControl.ApiCallNews();
-            CopyrightText.Text = Notice.copyright;
-            DateText.Text = Convert.ToString(Notice.date);
-            ExplanationText.Text = Notice.explanation;
-            MediaText.Text = Notice.hdurl;
-            Media_typeText.Text = Notice.media_type;
-            Service_VersionText.Text = Notice.service_version;
-            TitleText.Text = Notice.title;
-            UrlText.Text = Notice.url;
+            //ApiCallNews() possui sistema de pesquisa atraves ded datas sendo 1º param data inicial e 2º param ddata final da pesquisa
+            //Retornando noticias entre os dias pesquisados
+            foreach (News x in Notice)
+            {
+                CopyrightText.Text = x.copyright;
+                DateText.Text = Convert.ToString(x.date);
+                ExplanationText.Text = x.explanation;
+                MediaText.Text = x.hdurl;
+                Media_typeText.Text = x.media_type;
+                Service_VersionText.Text = x.service_version;
+                TitleText.Text = x.title;
+                UrlText.Text = x.url;
+            }
 
             //ExoPlanetas
             ExoPlanet planet = new ExoPlanet();
-            //ApiCallExoPlanet tem siistema de pesquisa, "false"(string) para retornar lista de planetas, valor/nome do planeta retorna ele ou nomes parecidos
-            foreach(ExoPlanet x in apiControl.ApiCallExoPlanet("false"))
+            //ApiCallExoPlanet() possui sistema de pesquisa, simplesmente chamar retornar lista de planetas, pl_hostname/nome do planeta retorna ele ou nomes parecidos
+            foreach(ExoPlanet x in apiControl.ApiCallExoPlanet())
             {
                 Planets.Items.Add(x.pl_hostname);
             }

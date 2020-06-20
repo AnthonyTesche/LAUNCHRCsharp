@@ -17,3 +17,7 @@ C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\UI.csproj.CoreCompileInput
 C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\UI.csproj.CopyComplete
 C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\LAUNCHR.exe
 C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\LAUNCHR.pdb
+C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\bin\Debug\MySql.Data.dll
+C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\bin\Debug\Google.Protobuf.dll
+C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\bin\Debug\Renci.SshNet.dll
+C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\bin\Debug\BouncyCastle.Crypto.dll
