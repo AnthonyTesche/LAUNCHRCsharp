@@ -8,7 +8,7 @@ using Entities;
 using MySql.Data.MySqlClient;
 namespace Services
 {
-    class CommentService
+    public class CommentService
     {
         public void InsertComment(Comments coment)
         {

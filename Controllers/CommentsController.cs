@@ -5,18 +5,19 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
+using Services;
 
 namespace Controllers
 {
-    class CommentsController
+    public class CommentsController
     {
-        public static void addComment(string idPlanet, string text)
+        public void addComment(string idPlanet, string text)
         {
             Comments com = new Comments();
             com.idPlanet = idPlanet;
             com.comment = text;
-
-
+            CommentService comServ = new CommentService();
+            comServ.InsertComment(com);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Entities
         public string explanation { get; set; }
         [JsonProperty("hdurl")]
         public string hdurl { get; set; }
+        public string thumb { get; set; }
         public string media_type { get; set; }
         public string service_version { get; set; }
         public string title { get; set; }
