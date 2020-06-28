@@ -13,6 +13,9 @@ namespace LAUNCHR
 {
     public partial class Error : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
+
         public Error(Exception ex)
         {
             InitializeComponent();
@@ -56,5 +59,32 @@ namespace LAUNCHR
             ClienteEmail.sendEmail(email);
         }
 
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
+        }
+
+        // Form Commands
+        private void DragWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void DragWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void DragWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
     }
 }
