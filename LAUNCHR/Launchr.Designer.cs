@@ -55,7 +55,6 @@
             this.FlowNewsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.NoticePanel = new System.Windows.Forms.Panel();
             this.Copyright = new System.Windows.Forms.Label();
-            this.DescriptionText = new System.Windows.Forms.RichTextBox();
             this.BackButton = new System.Windows.Forms.Panel();
             this.Date = new System.Windows.Forms.Label();
             this.ImageCopyright = new System.Windows.Forms.Label();
@@ -77,11 +76,11 @@
             this.selectPlanetButton = new System.Windows.Forms.Panel();
             this.PlanetsChooseLabel = new System.Windows.Forms.Label();
             this.selectPlanetCombo = new System.Windows.Forms.ComboBox();
+            this.ExoPageTitle = new System.Windows.Forms.Label();
+            this.ExoPageDesc = new System.Windows.Forms.Label();
             this.Minimize = new System.Windows.Forms.Panel();
             this.ResSize = new System.Windows.Forms.Panel();
             this.Close = new System.Windows.Forms.Panel();
-            this.ExoPageTitle = new System.Windows.Forms.Label();
-            this.ExoPageDesc = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.CreditPanel.SuspendLayout();
             this.NewsPanel.SuspendLayout();
@@ -350,13 +349,12 @@
             this.FlowNewsPanel.Controls.Add(this.NoticePanel);
             this.FlowNewsPanel.Location = new System.Drawing.Point(144, 32);
             this.FlowNewsPanel.Name = "FlowNewsPanel";
-            this.FlowNewsPanel.Size = new System.Drawing.Size(631, 394);
+            this.FlowNewsPanel.Size = new System.Drawing.Size(656, 418);
             this.FlowNewsPanel.TabIndex = 5;
             // 
             // NoticePanel
             // 
             this.NoticePanel.Controls.Add(this.Copyright);
-            this.NoticePanel.Controls.Add(this.DescriptionText);
             this.NoticePanel.Controls.Add(this.BackButton);
             this.NoticePanel.Controls.Add(this.Date);
             this.NoticePanel.Controls.Add(this.ImageCopyright);
@@ -364,7 +362,7 @@
             this.NoticePanel.Controls.Add(this.Image);
             this.NoticePanel.Location = new System.Drawing.Point(3, 3);
             this.NoticePanel.Name = "NoticePanel";
-            this.NoticePanel.Size = new System.Drawing.Size(598, 374);
+            this.NoticePanel.Size = new System.Drawing.Size(653, 415);
             this.NoticePanel.TabIndex = 0;
             // 
             // Copyright
@@ -375,18 +373,6 @@
             this.Copyright.Size = new System.Drawing.Size(51, 13);
             this.Copyright.TabIndex = 6;
             this.Copyright.Text = "Copyright";
-            // 
-            // DescriptionText
-            // 
-            this.DescriptionText.BackColor = System.Drawing.SystemColors.Control;
-            this.DescriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DescriptionText.Location = new System.Drawing.Point(156, 365);
-            this.DescriptionText.Name = "DescriptionText";
-            this.DescriptionText.ReadOnly = true;
-            this.DescriptionText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.DescriptionText.Size = new System.Drawing.Size(392, 28);
-            this.DescriptionText.TabIndex = 5;
-            this.DescriptionText.Text = "";
             // 
             // BackButton
             // 
@@ -592,6 +578,26 @@
             this.selectPlanetCombo.Size = new System.Drawing.Size(121, 21);
             this.selectPlanetCombo.TabIndex = 0;
             // 
+            // ExoPageTitle
+            // 
+            this.ExoPageTitle.AutoSize = true;
+            this.ExoPageTitle.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExoPageTitle.Location = new System.Drawing.Point(398, 62);
+            this.ExoPageTitle.Name = "ExoPageTitle";
+            this.ExoPageTitle.Size = new System.Drawing.Size(133, 25);
+            this.ExoPageTitle.TabIndex = 10;
+            this.ExoPageTitle.Text = "ExoPlanets";
+            // 
+            // ExoPageDesc
+            // 
+            this.ExoPageDesc.AutoSize = true;
+            this.ExoPageDesc.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExoPageDesc.Location = new System.Drawing.Point(239, 111);
+            this.ExoPageDesc.Name = "ExoPageDesc";
+            this.ExoPageDesc.Size = new System.Drawing.Size(483, 14);
+            this.ExoPageDesc.TabIndex = 11;
+            this.ExoPageDesc.Text = "Here you can search every planet discovered by NASA and see the open data about";
+            // 
             // Minimize
             // 
             this.Minimize.BackColor = System.Drawing.SystemColors.MenuText;
@@ -621,26 +627,6 @@
             this.Close.Size = new System.Drawing.Size(32, 32);
             this.Close.TabIndex = 0;
             this.Close.Click += new System.EventHandler(this.Close_Click);
-            // 
-            // ExoPageTitle
-            // 
-            this.ExoPageTitle.AutoSize = true;
-            this.ExoPageTitle.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExoPageTitle.Location = new System.Drawing.Point(398, 62);
-            this.ExoPageTitle.Name = "ExoPageTitle";
-            this.ExoPageTitle.Size = new System.Drawing.Size(133, 25);
-            this.ExoPageTitle.TabIndex = 10;
-            this.ExoPageTitle.Text = "ExoPlanets";
-            // 
-            // ExoPageDesc
-            // 
-            this.ExoPageDesc.AutoSize = true;
-            this.ExoPageDesc.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExoPageDesc.Location = new System.Drawing.Point(239, 111);
-            this.ExoPageDesc.Name = "ExoPageDesc";
-            this.ExoPageDesc.Size = new System.Drawing.Size(483, 14);
-            this.ExoPageDesc.TabIndex = 11;
-            this.ExoPageDesc.Text = "Here you can search every planet discovered by NASA and see the open data about";
             // 
             // Launchr
             // 
@@ -706,7 +692,6 @@
         private System.Windows.Forms.Label TitleNotice;
         private System.Windows.Forms.PictureBox Image;
         private System.Windows.Forms.Panel BackButton;
-        private System.Windows.Forms.RichTextBox DescriptionText;
         private System.Windows.Forms.FlowLayoutPanel FlowNewsList;
         private System.Windows.Forms.Panel NewsListPanel;
         private System.Windows.Forms.Label NewsListText;

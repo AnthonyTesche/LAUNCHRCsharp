@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommentsForm.Designer.cs">
+      <DependentUpon>CommentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPlanet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CommentsForm.resx">
+      <DependentUpon>CommentsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPlanet.resx">
       <DependentUpon>FormPlanet.cs</DependentUpon>
     </EmbeddedResource>

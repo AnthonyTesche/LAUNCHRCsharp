@@ -36,6 +36,7 @@
             this.Close = new System.Windows.Forms.Panel();
             this.pl_hostnameTitle = new System.Windows.Forms.Label();
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.commentsButton = new System.Windows.Forms.Button();
             this.DragWindow.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,11 +106,22 @@
             this.flowPanel.Size = new System.Drawing.Size(442, 433);
             this.flowPanel.TabIndex = 3;
             // 
+            // commentsButton
+            // 
+            this.commentsButton.Location = new System.Drawing.Point(379, 72);
+            this.commentsButton.Name = "commentsButton";
+            this.commentsButton.Size = new System.Drawing.Size(75, 23);
+            this.commentsButton.TabIndex = 4;
+            this.commentsButton.Text = "Comments";
+            this.commentsButton.UseVisualStyleBackColor = true;
+            this.commentsButton.Click += new System.EventHandler(this.commentsButton_Click);
+            // 
             // FormPlanet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(466, 555);
+            this.Controls.Add(this.commentsButton);
             this.Controls.Add(this.flowPanel);
             this.Controls.Add(this.pl_hostnameTitle);
             this.Controls.Add(this.DragWindow);
@@ -131,5 +143,6 @@
         private System.Windows.Forms.Label pl_hostnameTitle;
         private System.Windows.Forms.Panel LaunchrTitle;
         private System.Windows.Forms.FlowLayoutPanel flowPanel;
+        private System.Windows.Forms.Button commentsButton;
     }
 }

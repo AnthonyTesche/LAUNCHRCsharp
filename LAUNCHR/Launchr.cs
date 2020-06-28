@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Channels;
 using ShockwaveFlashObjects;
+using System.Diagnostics.Tracing;
 
 namespace LAUNCHR
 {
@@ -21,16 +22,12 @@ namespace LAUNCHR
         private bool mouseDown;
         private Point lastLocation;
         public delegate void x(News x);
+
+        // Inicialização
         public Launchr()
         {
             InitializeComponent();
             DisableAll();
-            //Comments
-            //Busca e adiciona comentarios atraves do pl_hostname de cada planeta
-            //CommentsController comController = new CommentsController();
-            //comController.addComment("", "");
-
-
         }
         private void DisableAll(string caller = "")
         {
@@ -63,39 +60,8 @@ namespace LAUNCHR
                 ExoPageTitle.Visible = true;
             }
         }
-
-        private void Close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Minimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void DragWindow_MouseDown(object sender, MouseEventArgs e)
-        {
-            mouseDown = true;
-            lastLocation = e.Location;
-        }
-
-        private void DragWindow_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown)
-            {
-                this.Location = new Point(
-                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
-
-                this.Update();
-            }
-        }
-
-        private void DragWindow_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-        }
-
+        
+        //News Commands
         private void NewsPanel_Click(object sender, EventArgs e)
         {
             DisableAll("News");
@@ -114,7 +80,6 @@ namespace LAUNCHR
             FlowNewsPanel.Visible = true;
             TitleNotice.Text = x.title;
             Date.Text = x.date.ToString("yyyy-MM-dd");
-            DescriptionText.Text = x.explanation;
             if (x.media_type == "image")
             {
                 Image.ImageLocation = x.hdurl;
@@ -134,10 +99,31 @@ namespace LAUNCHR
                 x.copyright = "NASA/Unknown";
             }
             Copyright.Text = "Text by " + x.copyright;
+            
+            
+            RichTextBox DescriptionText = new RichTextBox();
+            DescriptionText.Text = x.explanation;
+            DescriptionText.Location = new System.Drawing.Point(156, 365);
+            DescriptionText.Size = new System.Drawing.Size(392, 20);
+            DescriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            DescriptionText.BackColor = SystemColors.Control;
             Graphics g = CreateGraphics();
             DescriptionText.Height = (int)g.MeasureString(DescriptionText.Text,
             DescriptionText.Font, DescriptionText.Width).Height + 10;
+            NoticePanel.Controls.Add(DescriptionText);
+
+            Button b = new Button();
+            b.Text = "Comments";
+            b.Location = new System.Drawing.Point(DescriptionText.Size.Width + 80, DescriptionText.Size.Height + 365 + 10);
+            b.Click += new EventHandler((senderNoticeShow, eNoticeShow) => commentsButton_Click(sender, e, TitleNotice.Text));
+            NoticePanel.Controls.Add(b);
             NoticePanel.AutoSize = true;
+        }
+
+        public void commentsButton_Click(object sender, EventArgs e, string ident)
+        {
+            CommentsForm comForm = new CommentsForm(ident);
+            comForm.ShowDialog();
         }
 
         private void videoRedirect_Click(object sender, EventArgs e, string url)
@@ -148,11 +134,6 @@ namespace LAUNCHR
         private void BackButton_Click(object sender, EventArgs e)
         {
             FlowNewsPanel.Visible = false;
-        }
-
-        private void CreditPanel_Click(object sender, EventArgs e)
-        {
-            CreditsPanel.Visible = true;
         }
 
         private void populateNewsList(List<News> Notice,object sender, EventArgs e)
@@ -212,12 +193,12 @@ namespace LAUNCHR
                 count++;
             }
         }
-
+        
         private void SearchButton_Click(object sender, EventArgs e)
         {
             ApiController apiControl = new ApiController();
             List<News> Notice = new List<News>();
-            if(!validate(SearchInit.Text, SearchEnd.Text))
+            if (!validate(SearchInit.Text, SearchEnd.Text))
             {
                 MessageBox.Show("Complete all required fields");
                 return;
@@ -233,18 +214,30 @@ namespace LAUNCHR
             if (String.IsNullOrEmpty(init) || init == "    -  -" || !DateTime.TryParse(init, out temp))
             {
                 return false;
-            } else if (String.IsNullOrEmpty(end) || end == "    -  -" || !DateTime.TryParse(end, out temp))
+            }
+            else if (String.IsNullOrEmpty(end) || end == "    -  -" || !DateTime.TryParse(end, out temp))
             {
                 return false;
             }
             return pass;
         }
+
+        //Credits Commands
+        private void CreditPanel_Click(object sender, EventArgs e)
+        {
+            if(CreditsPanel.Visible == true)
+            {
+                CreditsPanel.Visible = false;
+            } else
+            {
+                CreditsPanel.Visible = true;
+            }
+        }
+
+        //ExoPlanets Commands
         private void ExoPlanetsPanel_Click(object sender, EventArgs e)
         {
-            //Disable all
             DisableAll("ExoPlanets");
-            
-            //Enable all ExoPlanets Data
             ApiController apiControl = new ApiController();
             ExoPlanet planet = new ExoPlanet();
             foreach (ExoPlanet x in apiControl.ApiCallExoPlanet())
@@ -280,6 +273,39 @@ namespace LAUNCHR
                     return;
                 }
             }
+        }
+
+        //Form Commands / Fechar / Arrastar / Minimizar
+        private void Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void DragWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void DragWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void DragWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

@@ -11,13 +11,18 @@ namespace Controllers
 {
     public class CommentsController
     {
-        public void addComment(string idPlanet, string text)
+        public void addComment(Comments com)
         {
-            Comments com = new Comments();
-            com.idPlanet = idPlanet;
-            com.comment = text;
             CommentService comServ = new CommentService();
+            com.date = DateTime.Now.ToString("yyyy-MM-dd");
             comServ.InsertComment(com);
+        }
+
+        public List<Comments> getComments(string idPlanet)
+        {
+            CommentService comServ = new CommentService();
+            comServ.selectComments(idPlanet);
+            return comServ.selectComments(idPlanet);
         }
     }
 }
