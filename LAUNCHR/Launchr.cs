@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entities;
 using Controllers;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Channels;
-using ShockwaveFlashObjects;
-using System.Diagnostics.Tracing;
 
 namespace LAUNCHR
 {
@@ -176,7 +166,7 @@ namespace LAUNCHR
                 {
                     if (String.IsNullOrEmpty(x.explanation))
                     {
-                        MessageBox.Show("API não retornou noticias!");
+                        MessageBox.Show("API Failed, Try again later!");
                         return;
                     }
                     Label lbl = new Label();

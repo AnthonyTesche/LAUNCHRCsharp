@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Services;
 using Entities;
 using Newtonsoft.Json;
-using System.Security.AccessControl;
 
 namespace Controllers
 {
@@ -13,36 +11,28 @@ namespace Controllers
         public List<News> ApiCallNews(string searchInit = "", string searchFinish = "")
         {
             string url = "https://api.nasa.gov/planetary/apod";
-            string key = "?api_key=qExb1GxixvyuxsUefkckJ97Iykc6g8Q3WNirJFDQ";
+            string key = "?api_key= API KEY";
             string search = "&start_date=" + searchInit + "&end_date=" + searchFinish;
             List<News> Notice = new List<News>();
-            try
+            if (String.IsNullOrEmpty(searchInit) && String.IsNullOrEmpty(searchFinish))
             {
-                if (String.IsNullOrEmpty(searchInit) && String.IsNullOrEmpty(searchFinish))
+                string today = DateTime.Now.ToString("yyyy-MM-dd");
+                search = "&start_date=" + today + "&end_date=" + today;
+                Api api = new Api(url, key);
+                var news = JsonConvert.DeserializeObject<News>(api.makeRequest().ToString());
+                Notice.Add(news);
+                return Notice;
+            } else
+            {
+                key += search;
+                Api api = new Api(url, key);
+                var news = JsonConvert.DeserializeObject<IList<News>>(api.makeRequest().ToString());
+                foreach (News x in news)
                 {
-                    string today = DateTime.Now.ToString("yyyy-MM-dd");
-                    search = "&start_date=" + today + "&end_date=" + today;
-                    Api api = new Api(url, key);
-                    var news = JsonConvert.DeserializeObject<News>(api.makeRequest().ToString());
-                    Notice.Add(news);
-                    return Notice;
-                } else
-                {
-                    key += search;
-                    Api api = new Api(url, key);
-                    var news = JsonConvert.DeserializeObject<IList<News>>(api.makeRequest().ToString());
-                    foreach (News x in news)
-                    {
-                        Notice.Add(x);
-                    }
-                    return Notice;
+                    Notice.Add(x);
                 }
-            } 
-            catch (Exception e)
-            {
-                //Chamar erros aqui "e"
+                return Notice;
             }
-            return Notice;
         }
 
         public List<ExoPlanet> ApiCallExoPlanet(string search = "false")
