@@ -20,59 +20,72 @@ namespace LAUNCHR
         public FormPlanet(ExoPlanet planet, object sender, EventArgs e)
         {
             InitializeComponent();
-            int xPanel = 3;
-            int yPanel = 3;
             flowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowPanel.AutoScroll = true;
-            var prop = planet.GetType().GetProperties();
             pl_hostnameTitle.Text = planet.pl_hostname;
-            foreach (var props in prop)
+            try
             {
-                var variable = props.GetMethod;
-                object xx = variable.Invoke(planet, null);
-                if(xx == null)
+                int xPanel = 3;
+                int yPanel = 3;
+                var prop = planet.GetType().GetProperties();
+                foreach (var props in prop)
                 {
-                    continue;
+                    var variable = props.GetMethod;
+                    object xx = variable.Invoke(planet, null);
+                    if (xx == null)
+                    {
+                        continue;
+                    }
+                    if (!String.IsNullOrEmpty(variable.Invoke(planet, null).ToString()))
+                    {
+                        Panel p = new Panel();
+                        p.Name = variable.Invoke(planet, null).ToString() + "Panel";
+                        p.Location = new System.Drawing.Point(xPanel, yPanel);
+                        p.Size = new System.Drawing.Size(141, 45);
+                        p.BackColor = Color.FromArgb(0, 191, 255);
+                        flowPanel.Controls.Add(p);
+                        xPanel += 146;
+
+                        Label labelVar = new Label();
+                        labelVar.Text = props.Name;
+                        labelVar.Name = props.Name + "Label";
+                        labelVar.Location = new System.Drawing.Point(3, 0);
+                        p.Controls.Add(labelVar);
+
+                        Label quest = new Label();
+                        quest.Text = "?";
+                        quest.Font = new Font("Georgia", 10, FontStyle.Bold);
+                        quest.Name = variable.Invoke(planet, null).ToString() + "_Quest";
+                        quest.Click += new EventHandler((senderQuest, eQuest) => Quest_Click(sender, e, props.Name));
+                        quest.Location = new System.Drawing.Point(109, 22);
+                        p.Controls.Add(quest);
+
+                        TextBox txtb = new TextBox();
+                        txtb.Name = props.Name + "Box";
+                        txtb.Location = new System.Drawing.Point(3, 20);
+                        txtb.Size = new System.Drawing.Size(100, 20);
+                        txtb.Text = variable.Invoke(planet, null).ToString();
+                        txtb.TextAlign = HorizontalAlignment.Center;
+                        txtb.Font = new Font("Georgia", 9);
+                        p.Controls.Add(txtb);
+                    }
                 }
-                if (!String.IsNullOrEmpty(variable.Invoke(planet, null).ToString()))
-                {
-                    Panel p = new Panel();
-                    p.Name = variable.Invoke(planet, null).ToString() + "Panel";
-                    p.Location = new System.Drawing.Point(xPanel, yPanel);
-                    p.Size = new System.Drawing.Size(141, 45);
-                    p.BackColor = Color.FromArgb(0, 191, 255);
-                    flowPanel.Controls.Add(p);
-                    xPanel += 146;
-
-                    Label labelVar = new Label();
-                    labelVar.Text = props.Name;
-                    labelVar.Name = props.Name + "Label";
-                    labelVar.Location = new System.Drawing.Point(3, 0);
-                    p.Controls.Add(labelVar);
-
-                    Label quest = new Label();
-                    quest.Text = "?";
-                    quest.Font = new Font("Georgia", 10, FontStyle.Bold);
-                    quest.Name = variable.Invoke(planet, null).ToString() + "_Quest";
-                    quest.Click += new EventHandler((senderQuest, eQuest) => Quest_Click(sender, e, props.Name));
-                    quest.Location = new System.Drawing.Point(109, 22);
-                    p.Controls.Add(quest);
-
-                    TextBox txtb = new TextBox();
-                    txtb.Name = props.Name + "Box";
-                    txtb.Location = new System.Drawing.Point(3, 20);
-                    txtb.Size = new System.Drawing.Size(100, 20);
-                    txtb.Text = variable.Invoke(planet, null).ToString();
-                    txtb.TextAlign = HorizontalAlignment.Center;
-                    txtb.Font = new Font("Georgia", 9);
-                    p.Controls.Add(txtb);
-                }
+            } catch (Exception ex)
+            {
+                new Error(ex).ShowDialog();
             }
         }
         private void commentsButton_Click(object sender, EventArgs e)
         {
-            CommentsForm comForm = new CommentsForm(pl_hostnameTitle.Text);
-            comForm.ShowDialog();
+            try
+            {
+                CommentsForm comForm = new CommentsForm(pl_hostnameTitle.Text);
+                comForm.ShowDialog();
+            } catch (Exception ex)
+            {
+                new Error(ex).ShowDialog();
+            }
+            
         }
 
         private void Quest_Click(object sender, EventArgs e, string questName)

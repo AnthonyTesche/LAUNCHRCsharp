@@ -32,39 +32,46 @@ namespace LAUNCHR
             flowComments.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowComments.WrapContents = false;
             flowComments.AutoScroll = true;
-            CommentsController comController = new CommentsController();
             int xPanelL = 3;
             int yPanelL = 19;
             int xPanelS = 500;
             int yPanelS = 80;
             int count = 0;
-            foreach (Comments x in comController.getComments(titleComments.Text))
+
+            try
             {
-                Panel p = new Panel();
-                p.Location = new System.Drawing.Point(xPanelL, yPanelL);
-                p.Size = new System.Drawing.Size(xPanelS, yPanelS);
-                p.Name = x.name + "CommentPanel";
-                flowComments.Controls.Add(p);
-                yPanelL += 106;
+                CommentsController comController = new CommentsController();
+                foreach (Comments x in comController.getComments(titleComments.Text))
+                {
+                    Panel p = new Panel();
+                    p.Location = new System.Drawing.Point(xPanelL, yPanelL);
+                    p.Size = new System.Drawing.Size(xPanelS, yPanelS);
+                    p.Name = x.name + "CommentPanel";
+                    flowComments.Controls.Add(p);
+                    yPanelL += 106;
 
-                Label lbl = new Label();
-                lbl.Location = new System.Drawing.Point(0, 0);
-                lbl.Text = x.name;
-                lbl.Name = x.name + "NameLabel";
-                p.Controls.Add(lbl);
+                    Label lbl = new Label();
+                    lbl.Location = new System.Drawing.Point(0, 0);
+                    lbl.Text = x.name;
+                    lbl.Name = x.name + "NameLabel";
+                    p.Controls.Add(lbl);
 
-                Label lblDate = new Label();
-                lblDate.Location = new System.Drawing.Point(440, 0);
-                lblDate.Text = x.date;
-                lblDate.Name = "DateLabel" + count++;
-                p.Controls.Add(lblDate);
+                    Label lblDate = new Label();
+                    lblDate.Location = new System.Drawing.Point(440, 0);
+                    lblDate.Text = x.date;
+                    lblDate.Name = "DateLabel" + count++;
+                    p.Controls.Add(lblDate);
 
-                RichTextBox commentBox = new RichTextBox();
-                commentBox.Location = new System.Drawing.Point(4, 21);
-                commentBox.Size = new System.Drawing.Size(493, 56);
-                commentBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                commentBox.Text = x.comment;
-                p.Controls.Add(commentBox);
+                    RichTextBox commentBox = new RichTextBox();
+                    commentBox.Location = new System.Drawing.Point(4, 21);
+                    commentBox.Size = new System.Drawing.Size(493, 56);
+                    commentBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                    commentBox.Text = x.comment;
+                    p.Controls.Add(commentBox);
+                }
+            } catch (Exception ex)
+            {
+                new Error(ex).ShowDialog();
             }
         }
 
@@ -72,19 +79,25 @@ namespace LAUNCHR
         {
             CommentsController comController = new CommentsController();
             Comments com = new Comments();
-            com.name = addNameBox.Text;
-            if (String.IsNullOrEmpty(com.name))
+            try
             {
-                com.name = "Unknown";
-            }
-            com.comment = addComment.Text;
-            com.idPlanet = titleComments.Text;
-            if (validate(com))
+                com.name = addNameBox.Text;
+                if (String.IsNullOrEmpty(com.name))
+                {
+                    com.name = "Unknown";
+                }
+                com.comment = addComment.Text;
+                com.idPlanet = titleComments.Text;
+                if (validate(com))
+                {
+                    MessageBox.Show("Type a comment");
+                }
+                comController.addComment(com);
+                showComments();
+            } catch (Exception ex)
             {
-                MessageBox.Show("Type a comment");
+                new Error(ex).ShowDialog();
             }
-            comController.addComment(com);
-            showComments();
         }
 
         private bool validate(Comments com)

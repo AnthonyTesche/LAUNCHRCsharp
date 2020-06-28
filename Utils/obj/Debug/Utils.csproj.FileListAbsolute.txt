@@ -1,0 +1,6 @@
+C:\Users\tesch\source\repos\LAUNCHR\Utils\bin\Debug\Utils.dll
+C:\Users\tesch\source\repos\LAUNCHR\Utils\bin\Debug\Utils.pdb
+C:\Users\tesch\source\repos\LAUNCHR\Utils\obj\Debug\Utils.csprojAssemblyReference.cache
+C:\Users\tesch\source\repos\LAUNCHR\Utils\obj\Debug\Utils.csproj.CoreCompileInputs.cache
+C:\Users\tesch\source\repos\LAUNCHR\Utils\obj\Debug\Utils.dll
+C:\Users\tesch\source\repos\LAUNCHR\Utils\obj\Debug\Utils.pdb

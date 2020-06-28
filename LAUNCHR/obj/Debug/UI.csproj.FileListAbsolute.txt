@@ -28,3 +28,6 @@ C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\AxInterop.ShockwaveFlashOb
 C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\UI.csproj.ResolveComReference.cache
 C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\LAUNCHR.FormPlanet.resources
 C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\LAUNCHR.CommentsForm.resources
+C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\bin\Debug\Utils.dll
+C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\bin\Debug\Utils.pdb
+C:\Users\tesch\source\repos\LAUNCHR\LAUNCHR\obj\Debug\LAUNCHR.Error.resources

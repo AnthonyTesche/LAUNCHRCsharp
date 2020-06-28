@@ -52,6 +52,12 @@
     <Compile Include="CommentsForm.Designer.cs">
       <DependentUpon>CommentsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Error.Designer.cs">
+      <DependentUpon>Error.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPlanet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CommentsForm.resx">
       <DependentUpon>CommentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Error.resx">
+      <DependentUpon>Error.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPlanet.resx">
       <DependentUpon>FormPlanet.cs</DependentUpon>
@@ -106,6 +115,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{2c810cde-1837-414f-80c2-907ab89df604}</Project>
       <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{05cc4641-f64a-43f4-b140-d419aeed877d}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\nasa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black-hole.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -63,6 +63,16 @@ namespace LAUNCHR.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap black_hole {
+            get {
+                object obj = ResourceManager.GetObject("black-hole", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerebro {
             get {
                 object obj = ResourceManager.GetObject("cerebro", resourceCulture);
