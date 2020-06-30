@@ -11,7 +11,7 @@ namespace Controllers
         public List<News> ApiCallNews(string searchInit = "", string searchFinish = "")
         {
             string url = "https://api.nasa.gov/planetary/apod";
-            string key = "?api_key= API KEY";
+            string key = "?api_key=qExb1GxixvyuxsUefkckJ97Iykc6g8Q3WNirJFDQ";
             string search = "&start_date=" + searchInit + "&end_date=" + searchFinish;
             List<News> Notice = new List<News>();
             if (String.IsNullOrEmpty(searchInit) && String.IsNullOrEmpty(searchFinish))

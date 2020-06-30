@@ -35,7 +35,7 @@ namespace LAUNCHR
                         p.Name = variable.Invoke(planet, null).ToString() + "Panel";
                         p.Location = new System.Drawing.Point(xPanel, yPanel);
                         p.Size = new System.Drawing.Size(141, 45);
-                        p.BackColor = Color.FromArgb(0, 191, 255);
+                        p.BackColor = Color.FromArgb(200, 200, 200);
                         flowPanel.Controls.Add(p);
                         xPanel += 146;
 

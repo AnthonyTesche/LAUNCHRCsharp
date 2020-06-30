@@ -40,9 +40,7 @@
             this.addComment = new System.Windows.Forms.RichTextBox();
             this.addCommentButon = new System.Windows.Forms.Button();
             this.flowComments = new System.Windows.Forms.FlowLayoutPanel();
-            this.pastLabel = new System.Windows.Forms.Label();
             this.DragWindow.SuspendLayout();
-            this.flowComments.SuspendLayout();
             this.SuspendLayout();
             // 
             // DragWindow
@@ -141,20 +139,10 @@
             // 
             // flowComments
             // 
-            this.flowComments.Controls.Add(this.pastLabel);
             this.flowComments.Location = new System.Drawing.Point(171, 237);
             this.flowComments.Name = "flowComments";
             this.flowComments.Size = new System.Drawing.Size(559, 201);
             this.flowComments.TabIndex = 23;
-            // 
-            // pastLabel
-            // 
-            this.pastLabel.AutoSize = true;
-            this.pastLabel.Location = new System.Drawing.Point(3, 0);
-            this.pastLabel.Name = "pastLabel";
-            this.pastLabel.Size = new System.Drawing.Size(80, 13);
-            this.pastLabel.TabIndex = 0;
-            this.pastLabel.Text = "Past Comments";
             // 
             // CommentsForm
             // 
@@ -175,8 +163,6 @@
             this.Name = "CommentsForm";
             this.Text = "CommentsForm";
             this.DragWindow.ResumeLayout(false);
-            this.flowComments.ResumeLayout(false);
-            this.flowComments.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,6 +181,5 @@
         private System.Windows.Forms.RichTextBox addComment;
         private System.Windows.Forms.Button addCommentButon;
         private System.Windows.Forms.FlowLayoutPanel flowComments;
-        private System.Windows.Forms.Label pastLabel;
     }
 }

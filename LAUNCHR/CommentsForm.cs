@@ -25,6 +25,7 @@ namespace LAUNCHR
             flowComments.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowComments.WrapContents = false;
             flowComments.AutoScroll = true;
+            flowComments.Controls.Clear();
             int xPanelL = 3;
             int yPanelL = 19;
             int xPanelS = 500;
@@ -33,6 +34,12 @@ namespace LAUNCHR
 
             try
             {
+                Label pastTitle = new Label();
+                pastTitle.Location = new System.Drawing.Point(3,0);
+                pastTitle.Text = "Past Comments";
+                pastTitle.Name = "pastTitleLabel";
+                flowComments.Controls.Add(pastTitle);
+
                 CommentsController comController = new CommentsController();
                 foreach (Comments x in comController.getComments(titleComments.Text))
                 {
