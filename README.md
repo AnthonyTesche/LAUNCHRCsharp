@@ -5,7 +5,7 @@ Projeto LAUNCHR consiste na disponibilidade de dados da NASA de forma mais intui
 
 ## Packages utilizados
 
-- [Documentacao NuGet](https://github.com/NuGet/docs.microsoft.com-nuget) cont�m documenta��o do NuGet's. 
-- [Documentacao Json.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) cont�m documenta��o do Json.NET. 
+- [Documentacao NuGet](https://github.com/NuGet/docs.microsoft.com-nuget) contem documentacao do NuGet's. 
+- [Documentacao Json.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) contem documentacao do Json.NET. 
 
 College things, you know, this one was based on the first [project](https://github.com/AnthonyTesche/LAUNCHR)
